@@ -1,0 +1,22 @@
+def login_user():  
+	
+	global store_userID
+	
+	if username1.value == "":
+		error("Error", "You must enter a username")
+	elif password1.value == "":
+		info("Error", "You must enter a password")
+	elif "'" in password1.value  or "'" in username1.value:
+		info("Error", "No quotes")
+	else:
+		sqlselect = ("SELECT * from Customer_Table WHERE Username = "+ "'"+ str(username1.value) + "'"+ " AND Password = "+ "'" + str(password1.value) + "'")
+		print(sqlselect)
+		rows = query_database(database_file, sqlselect)
+		if len(rows) == 0: 
+			info("Error","User not found.")
+		else:
+			store_userID = rows [0][0]
+			print (store_userID)
+			info("Log in","Username and password found.")
+			booking_window.show()
+#
