@@ -1,0 +1,69 @@
+from guizero import *
+import sqlite3
+from sqlite3 import Error
+import os
+import os.path
+from datetime import datetime
+
+
+
+#################################
+# build sign up window          #
+#################################
+
+su_window = Window(login_window, title="Sign up", height = 470, width = 400)
+
+text_blank = Text(su_window, text="")
+
+titlebox = TitleBox(su_window, text="Pickled Quiche", align="top")
+title_text = Text(titlebox, text="SIGN UP", size=20, font="NanumGothicExtraBold")
+sub_text = Text(titlebox, text="   Please enter your details below   ", size=10, font="NanumGothic")
+pic_logo = Picture(titlebox, image="food2.png", width = 70, height = 70)
+
+form_box0 = Box(su_window, width="fill", align="top")
+blank = Text(form_box0, align = 'right', text = '                         ')
+Text(form_box0, text="", align="right", font="NanumGothic")
+
+form_box1 = Box(su_window, width="fill", align="top")
+blank = Text(form_box1, align = 'right', text = '                         ')
+su_Firstname = TextBox(form_box1, align = 'right', text="", width="26")
+Text(form_box1, text=" Firstname ", align="right", font="NanumGothic")
+
+form_box2 = Box(su_window, width="fill" ,align="top")
+blank = Text(form_box2, align = 'right', text = '                         ')
+su_Lastname = TextBox(form_box2, align = 'right', text="", width="26")
+Text(form_box2, text=" Lastname ", align="right", font="NanumGothic")
+#
+form_box3 = Box(su_window, width="fill" ,align="top")
+blank = Text(form_box3, align = 'right', text = '                         ')
+su_Username = TextBox(form_box3, align = 'right', text="", width="26")
+Text(form_box3, text=" Username ", align="right", font="NanumGothic") 
+
+#
+form_box4 = Box(su_window, width="fill" ,align="top")
+blank = Text(form_box4, align = 'right', text = '                         ')
+su_Password = TextBox(form_box4, align = 'right', text="", width="26")
+Text(form_box4, text=" Password ", align="right", font="NanumGothic") 
+
+#
+form_box5 = Box(su_window, width="fill" ,align="top")
+blank = Text(form_box5, align = 'right', text = '                         ')
+su_PHnumber = TextBox(form_box5, align = 'right', text="", width="26")
+Text(form_box5, text=" Phone number ", align="right", font="NanumGothic") 
+
+#
+form_box6 = Box(su_window, width="fill" ,align="top")
+blank = Text(form_box6, align = 'right', text = '                         ')
+su_Email = TextBox(form_box6, align = 'right', text="", width="26")
+Text(form_box6, text=" Email ", align="right", font="NanumGothic")
+#
+form_box7 = Box(su_window, width="fill" ,align="top")
+blank = Text(form_box7, align = 'right', text = '                         ')
+Text(form_box7, text="", align="right", font="NanumGothic") 
+
+
+#
+create_button = PushButton(su_window, text="Create Account", width = 9, height = 1, command=Create_user)
+back_button = PushButton(su_window, text="Back", width = 9, height = 1, command=hide_signup)
+su_window.bg = "light blue"
+su_window.hide()
