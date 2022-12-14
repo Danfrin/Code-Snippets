@@ -1,0 +1,22 @@
+from guizero import *
+import sqlite3
+from sqlite3 import Error
+import os
+import os.path
+from datetime import datetime
+
+def query_database(database, query):
+	Lconn = sqlite3.connect(database)
+	cur = Lconn.cursor()			
+	cur.execute(query)
+	rows = cur.fetchall()
+	cur.close()
+	return rows
+#
+#
+def execute_sql(database, sql_statement):
+	Lconn = sqlite3.connect(database)
+	cur = Lconn.cursor()
+	cur.execute(sql_statement)
+	Lconn.commit()
+	return cur.lastrowid
