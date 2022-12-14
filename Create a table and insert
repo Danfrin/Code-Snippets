@@ -1,0 +1,33 @@
+from guizero import *
+import sqlite3
+from sqlite3 import Error
+import os
+import os.path
+from datetime import datetime
+
+sql = """
+CREATE TABLE "Customer_Table" ( 
+"CustomerID" INTEGER NOT NULL,
+"Firstname" TEXT,
+"Lastname" TEXT,
+"Username" TEXT,
+"Password" TEXT,
+"Phone_Number" TEXT,
+"Email" TEXT,
+PRIMARY KEY("CustomerID" AUTOINCREMENT)
+);
+CREATE TABLE "Booking_Table" ( 
+"BookingID" INTEGER NOT NULL,
+"Party_Size" TEXT,
+"Booking_Date" TEXT,
+"Booking_Time" TEXT,
+"CustomerID" INTEGER,
+PRIMARY KEY("BookingID" AUTOINCREMENT)
+CONSTRAINT "CustomerID"  FOREIGN KEY("CustomerID") REFERENCES "Customer_Table"("CustomerID")
+
+
+);
+insert into Customer_Table  ( Firstname, Lastname, Username, Password, Phone_Number, Email) values ('Dave', 'Allan', '1', '1', '07950459008', 'halo@gmail.com');
+insert into Customer_Table  ( Firstname, Lastname, Username, Password, Phone_Number, Email) values ('Fred', 'Allan', '2', '2', '07950458998', 'halo2@gmail.com');
+insert into Booking_Table   (Party_Size, Booking_Date, Booking_Time, CustomerID) values ('8','27/10/2022','16:30', '1');
+"""
