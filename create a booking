@@ -1,0 +1,19 @@
+def Create_booking():  
+
+		global guest_num
+		global date_slot
+		global time_slot
+
+		if guest_num.value == "-select-":
+			error("Error", "You must select the number of guests")
+		if date_slot.value == "-select-":
+			error("Error", "You must select a date")
+		if time_slot.value == "-select-":
+			error("Error", "You must select a time")
+		else:
+			sqlinsert = "INSERT INTO Booking_Table(Party_Size, Booking_Date, Booking_Time, CustomerID) VALUES ('"+ str(guest_num.value) + "','" + str(date_slot.value) + "','" + str(time_slot.value) + "','" + str(store_userID) + "')"
+			execute_sql(database_file, sqlinsert)
+			info("Success!", "Booking created.")
+			booking_window.hide()
+			login_window.show()
+			print(sqlinsert)	
